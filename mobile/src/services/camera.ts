@@ -1,6 +1,5 @@
 import RNFS from 'react-native-fs'
-import type { CameraPhotoOutput } from 'react-native-vision-camera'
-import type { PhotoFile } from 'react-native-vision-camera'
+import type { Camera } from 'react-native-vision-camera'
 import { wsService } from './websocket'
 import { adaptiveController } from './adaptiveController'
 
@@ -27,29 +26,19 @@ export function getFpsValue(fps: CameraConfig['fps']): number {
 }
 
 export async function captureAndSendFrame(
-  photoOutput: CameraPhotoOutput,
+  camera: React.RefObject<Camera | null>,
 ) {
   if (adaptiveController.shouldSkipFrame()) return
 
-  const quality = adaptiveController.quality
-  const photoQuality = Math.max(0.1, Math.min(1.0, quality / 100))
-
   try {
-    const result: PhotoFile = await photoOutput.capturePhotoToFile(
-      { enableShutterSound: false },
-      {},
-    )
+    const snapshot = await camera.current?.takeSnapshot({
+      quality: Math.round(adaptiveController.quality),
+    })
 
-    const base64 = await RNFS.readFile(result.filePath, 'base64')
+    if (!snapshot?.path) return
 
-    await RNFS.unlink(result.filePath).catch(() => {})
-
+    const base64 = await RNFS.readFile(snapshot.path, 'base64')
+    await RNFS.unlink(snapshot.path).catch(() => {})
     wsService.sendFrame(base64)
-  } catch {}
-}
-
-export async function cleanupTempFile(filePath: string) {
-  try {
-    await RNFS.unlink(filePath)
   } catch {}
 }

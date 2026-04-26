@@ -4,8 +4,7 @@ import {
   Camera,
   useCameraDevice,
   useCameraPermission,
-  usePhotoOutput,
-  type CameraRef,
+  type Camera as CameraType,
 } from 'react-native-vision-camera'
 import { Detection, AppSettings } from '../types'
 import { DetectionOverlay } from '../components/DetectionOverlay'
@@ -22,10 +21,7 @@ interface Props {
 export function CameraScreen({ settings, onOpenSettings }: Props) {
   const device = useCameraDevice('back')
   const { hasPermission, requestPermission } = useCameraPermission()
-  const cameraRef = useRef<CameraRef>(null)
-  const photoOutput = usePhotoOutput({
-    quality: adaptiveController.quality / 100,
-  })
+  const cameraRef = useRef<CameraType>(null)
   const [isStreaming, setIsStreaming] = useState(false)
   const [connectionStatus, setConnectionStatus] = useState<
     'disconnected' | 'connecting' | 'connected'
@@ -73,7 +69,7 @@ export function CameraScreen({ settings, onOpenSettings }: Props) {
       const interval = 1000 / adaptiveController.targetFps
       const nextTick = Date.now() + interval
 
-      await captureAndSendFrame(photoOutput)
+      await captureAndSendFrame(cameraRef)
       frameCountRef.current++
 
       const delay = Math.max(0, nextTick - Date.now())
@@ -81,7 +77,7 @@ export function CameraScreen({ settings, onOpenSettings }: Props) {
     }
 
     tick()
-  }, [settings, photoOutput])
+  }, [settings])
 
   const stopStreaming = useCallback(() => {
     streamingRef.current = false
@@ -115,7 +111,8 @@ export function CameraScreen({ settings, onOpenSettings }: Props) {
         style={StyleSheet.absoluteFill}
         device={device}
         isActive={true}
-        outputs={[photoOutput]}
+        photo={true}
+        audio={false}
       />
 
       <DetectionOverlay

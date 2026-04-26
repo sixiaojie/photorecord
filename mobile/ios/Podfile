@@ -17,10 +17,6 @@ if linkage != nil
 end
 
 target 'Photorecord' do
-  # Explicitly resolve Nitro pods from node_modules
-  pod 'NitroModules', :path => '../node_modules/react-native-nitro-modules'
-  pod 'NitroImage', :path => '../node_modules/react-native-nitro-image'
-
   config = use_native_modules!
 
   use_react_native!(

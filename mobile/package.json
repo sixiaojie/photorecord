@@ -18,7 +18,7 @@
     "react-native-fs": "^2.20.0",
     "react-native-safe-area-context": "^5.7.0",
     "react-native-screens": "^4.24.0",
-    "react-native-vision-camera": "^5.0.6"
+    "react-native-vision-camera": "^4.7.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
