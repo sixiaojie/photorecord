@@ -57,7 +57,7 @@ workflows:
       - name: Install CocoaPods
         script: |
           cd $WORKING_DIRECTORY/ios
-          pod install
+          pod install --repo-update
       - name: Create export options plist
         script: |
           cat > $WORKING_DIRECTORY/ios/exportOptions.plist << EOL
