@@ -1,0 +1,99 @@
+workflows:
+  build-android:
+    name: Build Android APK
+    instance_type: mac_mini_m2
+    environment:
+      groups:
+        - codemagic_creds
+      vars:
+        WORKING_DIRECTORY: mobile
+      node: latest
+      java: 17
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Install dependencies
+        script: |
+          cd $WORKING_DIRECTORY
+          npm ci
+      - name: Build Android debug APK
+        script: |
+          cd $WORKING_DIRECTORY
+          npx react-native build-android --mode=debug
+    artifacts:
+      - $WORKING_DIRECTORY/android/app/build/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - builder@photorecord.app
+
+  build-ios:
+    name: Build iOS IPA
+    instance_type: mac_mini_m2
+    environment:
+      groups:
+        - codemagic_creds
+      vars:
+        WORKING_DIRECTORY: mobile
+        XCODE_WORKSPACE: Photorecord
+        XCODE_SCHEME: Photorecord
+      node: latest
+      cocoapods: default
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Install dependencies
+        script: |
+          cd $WORKING_DIRECTORY
+          npm ci
+      - name: Install CocoaPods
+        script: |
+          cd $WORKING_DIRECTORY/ios
+          pod install
+      - name: Create export options plist
+        script: |
+          cat > $WORKING_DIRECTORY/ios/exportOptions.plist << EOL
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>method</key>
+              <string>development</string>
+              <key>signingStyle</key>
+              <string>automatic</string>
+          </dict>
+          </plist>
+          EOL
+      - name: Build iOS debug
+        script: |
+          cd $WORKING_DIRECTORY/ios
+          xcodebuild -workspace $XCODE_WORKSPACE.xcworkspace \
+                     -scheme $XCODE_SCHEME \
+                     -configuration Debug \
+                     -sdk iphoneos \
+                     -archivePath build/Photorecord.xcarchive \
+                     -allowProvisioningUpdates \
+                     archive | xcpretty
+          xcodebuild -exportArchive \
+                     -archivePath build/Photorecord.xcarchive \
+                     -exportPath build/ \
+                     -exportOptionsPlist exportOptions.plist | xcpretty
+    artifacts:
+      - $WORKING_DIRECTORY/ios/build/*.ipa
+      - $WORKING_DIRECTORY/ios/build/*.dSYM.zip
+    publishing:
+      email:
+        recipients:
+          - builder@photorecord.app

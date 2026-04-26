@@ -1,0 +1,62 @@
+name: Build Android
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'mobile/**'
+  pull_request:
+    paths:
+      - 'mobile/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: mobile/package-lock.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 17
+
+      - uses: android-actions/setup-android@v3
+
+      - run: npm ci
+
+      - uses: actions/cache@v4
+        with:
+          path: mobile/android/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('mobile/android/**/*.gradle*') }}
+
+      - name: Decode signing keystore (if provided)
+        run: |
+          if [ -n "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" ]; then
+            echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android/app/release.keystore
+          fi
+
+      - name: Build debug APK
+        run: npx react-native build-android --mode=debug
+
+      - name: Build release APK (if keystore exists)
+        run: |
+          if [ -f android/app/release.keystore ]; then
+            cd android && ./gradlew assembleRelease
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: mobile/android/app/build/outputs/apk/**/*.apk

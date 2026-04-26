@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - 'mobile/**'
+      - 'server/**'
+  push:
+    branches: [main, master]
+
+jobs:
+  lint-mobile:
+    name: Lint & Typecheck (Mobile)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: mobile/package-lock.json
+
+      - run: npm ci
+
+      - name: TypeScript check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npx eslint src/ --max-warnings=0
+        continue-on-error: true
+
+  lint-server:
+    name: Lint & Vet (Server)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+          cache: true
+          cache-dependency-path: server/go.sum
+
+      - name: go vet
+        run: go vet ./...
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+          working-directory: server
