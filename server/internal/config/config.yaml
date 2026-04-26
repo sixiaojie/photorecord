@@ -1,0 +1,27 @@
+server:
+  host: "0.0.0.0"
+  port: 8080
+
+websocket:
+  path: "/ws/video"
+  max_frame_size_mb: 10
+  read_timeout: "60s"
+  write_timeout: "10s"
+
+detector:
+  enabled: true
+  model_path: "./models/yolov8n.onnx"
+  confidence_threshold: 0.5
+  max_detections: 100
+
+stream:
+  target_fps: 20
+  max_width: 1280
+  max_height: 720
+
+storage:
+  record_local: false
+  output_dir: "./recordings"
+
+log:
+  level: "info"

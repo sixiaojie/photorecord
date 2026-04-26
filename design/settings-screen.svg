@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#111;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Phone body -->
+  <rect x="0" y="0" width="390" height="844" rx="40" fill="#111"/>
+  <rect x="2" y="2" width="386" height="840" rx="38" fill="url(#bg)"/>
+
+  <!-- Status Bar -->
+  <text x="28" y="52" fill="white" font-size="14" font-family="sans-serif" font-weight="600">9:41</text>
+  <rect x="310" y="20" width="18" height="10" rx="3" fill="none" stroke="white" stroke-width="1"/>
+  <circle cx="350" cy="25" r="5" fill="none" stroke="white" stroke-width="1"/>
+
+  <!-- Header -->
+  <text x="28" y="100" fill="white" font-size="28" font-family="sans-serif" font-weight="bold">Settings</text>
+  <text x="28" y="122" fill="#00FF00" font-size="12" font-family="sans-serif" font-weight="bold" letter-spacing="1">SERVER</text>
+
+  <!-- Server Address -->
+  <text x="28" y="152" fill="#ccc" font-size="14" font-family="sans-serif">Address</text>
+  <rect x="28" y="160" width="334" height="44" rx="10" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="42" y="187" fill="#888" font-size="15" font-family="sans-serif">192.168.1.100</text>
+
+  <!-- Port -->
+  <text x="28" y="222" fill="#ccc" font-size="14" font-family="sans-serif">Port</text>
+  <rect x="28" y="230" width="160" height="44" rx="10" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="42" y="257" fill="#888" font-size="15" font-family="sans-serif">8080</text>
+
+  <!-- Stream Section -->
+  <text x="28" y="302" fill="#00FF00" font-size="12" font-family="sans-serif" font-weight="bold" letter-spacing="1">STREAM</text>
+
+  <!-- Frame Rate -->
+  <text x="28" y="330" fill="#ccc" font-size="14" font-family="sans-serif">Frame Rate</text>
+  <rect x="28" y="340" width="80" height="40" rx="10" fill="#1a3a1a" stroke="#00FF00" stroke-width="2"/>
+  <text x="68" y="366" fill="#00FF00" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Auto</text>
+  <rect x="114" y="340" width="70" height="40" rx="10" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="149" y="366" fill="#aaa" font-size="14" font-family="sans-serif" text-anchor="middle">15</text>
+  <rect x="190" y="340" width="70" height="40" rx="10" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="225" y="366" fill="#aaa" font-size="14" font-family="sans-serif" text-anchor="middle">20</text>
+  <rect x="266" y="340" width="70" height="40" rx="10" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="301" y="366" fill="#aaa" font-size="14" font-family="sans-serif" text-anchor="middle">30</text>
+
+  <!-- Resolution -->
+  <text x="28" y="408" fill="#ccc" font-size="14" font-family="sans-serif">Resolution</text>
+  <rect x="28" y="418" width="100" height="40" rx="10" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="78" y="444" fill="#aaa" font-size="14" font-family="sans-serif" text-anchor="middle">480p</text>
+  <rect x="134" y="418" width="100" height="40" rx="10" fill="#1a3a1a" stroke="#00FF00" stroke-width="2"/>
+  <text x="184" y="444" fill="#00FF00" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">720p</text>
+  <rect x="240" y="418" width="100" height="40" rx="10" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="290" y="444" fill="#aaa" font-size="14" font-family="sans-serif" text-anchor="middle">1080p</text>
+
+  <!-- Quality -->
+  <text x="28" y="486" fill="#ccc" font-size="14" font-family="sans-serif">Quality</text>
+  <rect x="28" y="494" width="160" height="44" rx="10" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="42" y="521" fill="#888" font-size="15" font-family="sans-serif">80</text>
+
+  <!-- Connection Section -->
+  <text x="28" y="566" fill="#00FF00" font-size="12" font-family="sans-serif" font-weight="bold" letter-spacing="1">CONNECTION</text>
+
+  <!-- Auto Reconnect -->
+  <text x="28" y="602" fill="#ccc" font-size="15" font-family="sans-serif">Auto Reconnect</text>
+  <rect x="310" y="588" width="50" height="26" rx="13" fill="#4CAF50"/>
+  <circle cx="350" cy="601" r="11" fill="white"/>
+
+  <!-- Save Button -->
+  <rect x="28" y="650" width="334" height="50" rx="12" fill="#00FF00"/>
+  <text x="195" y="680" fill="black" font-size="18" font-family="sans-serif" font-weight="bold" text-anchor="middle">Save</text>
+
+  <!-- Home indicator -->
+  <rect x="130" y="820" width="130" height="5" rx="2.5" fill="rgba(255,255,255,0.3)"/>
+</svg>

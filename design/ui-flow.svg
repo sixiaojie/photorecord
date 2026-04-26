@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420">
+  <defs>
+    <linearGradient id="camGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#111;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="setGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0d0d0d;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="420" fill="#0d0d0d" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="35" fill="white" font-size="20" font-family="sans-serif" font-weight="bold" text-anchor="middle">App UI Flow</text>
+
+  <!-- ============ Camera Screen ============ -->
+  <rect x="40" y="60" width="240" height="310" rx="24" fill="#222" filter="url(#shadow)"/>
+  <rect x="44" y="64" width="232" height="302" rx="22" fill="url(#camGrad)"/>
+
+  <!-- Status bar -->
+  <text x="62" y="88" fill="white" font-size="9" font-family="sans-serif">9:41</text>
+
+  <!-- Camera area -->
+  <rect x="56" y="100" width="208" height="180" rx="6" fill="#333"/>
+  <text x="160" y="195" fill="#555" font-size="11" font-family="sans-serif" text-anchor="middle">📷 Camera Feed</text>
+
+  <!-- Detection box -->
+  <rect x="70" y="120" width="60" height="75" rx="3" fill="none" stroke="#00FF00" stroke-width="2"/>
+  <rect x="68" y="112" width="50" height="14" rx="3" fill="#00FF00"/>
+  <text x="93" y="123" fill="black" font-size="7" font-family="sans-serif" text-anchor="middle" font-weight="bold">person 87%</text>
+
+  <!-- Detection box 2 -->
+  <rect x="160" y="230" width="50" height="50" rx="3" fill="none" stroke="#00FF00" stroke-width="2"/>
+
+  <!-- Bottom controls -->
+  <rect x="56" y="290" width="208" height="60" rx="0" fill="rgba(0,0,0,0.5)"/>
+  <circle cx="115" cy="320" r="4" fill="#00FF00"/>
+  <text x="125" y="323" fill="white" font-size="8" font-family="sans-serif">Connected</text>
+  <circle cx="160" cy="320" r="14" fill="rgba(255,0,0,0.4)" stroke="#FF0000" stroke-width="2"/>
+  <circle cx="160" cy="320" r="6" fill="#FF0000"/>
+  <circle cx="210" cy="320" r="10" fill="rgba(255,255,255,0.15)"/>
+  <text x="210" y="323" fill="white" font-size="10" font-family="sans-serif" text-anchor="middle">⚙</text>
+
+  <!-- Screen label -->
+  <text x="160" y="390" fill="#00FF00" font-size="10" font-family="sans-serif" font-weight="bold" text-anchor="middle">Camera Screen</text>
+  <text x="160" y="403" fill="#666" font-size="8" font-family="sans-serif" text-anchor="middle">Camera + Detection + Controls</text>
+
+  <!-- ============ Arrow ============ -->
+  <line x1="280" y1="215" x2="330" y2="215" stroke="#FFC107" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <polygon points="330,210 340,215 330,220" fill="#FFC107"/>
+  <text x="310" y="205" fill="#FFC107" font-size="9" font-family="sans-serif" text-anchor="middle">⚙ tap</text>
+
+  <!-- ============ Settings Screen ============ -->
+  <rect x="350" y="60" width="240" height="310" rx="24" fill="#222" filter="url(#shadow)"/>
+  <rect x="354" y="64" width="232" height="302" rx="22" fill="url(#setGrad)"/>
+
+  <!-- Header -->
+  <text x="374" y="95" fill="white" font-size="16" font-family="sans-serif" font-weight="bold">Settings</text>
+
+  <!-- Server section -->
+  <text x="374" y="120" fill="#00FF00" font-size="8" font-family="sans-serif" font-weight="bold" letter-spacing="0.8">SERVER</text>
+  <rect x="374" y="128" width="192" height="28" rx="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="384" y="147" fill="#888" font-size="9" font-family="sans-serif">192.168.1.100</text>
+  <rect x="374" y="162" width="90" height="28" rx="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="384" y="181" fill="#888" font-size="9" font-family="sans-serif">8080</text>
+
+  <!-- FPS section -->
+  <text x="374" y="208" fill="#00FF00" font-size="8" font-family="sans-serif" font-weight="bold" letter-spacing="0.8">STREAM</text>
+  <rect x="374" y="216" width="44" height="26" rx="6" fill="#1a3a1a" stroke="#00FF00" stroke-width="1.5"/>
+  <text x="396" y="234" fill="#00FF00" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">Auto</text>
+  <rect x="422" y="216" width="40" height="26" rx="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="442" y="234" fill="#888" font-size="9" font-family="sans-serif" text-anchor="middle">20</text>
+  <rect x="466" y="216" width="40" height="26" rx="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+  <text x="486" y="234" fill="#888" font-size="9" font-family="sans-serif" text-anchor="middle">30</text>
+
+  <!-- Resolution -->
+  <rect x="374" y="250" width="60" height="26" rx="6" fill="#1a3a1a" stroke="#00FF00" stroke-width="1.5"/>
+  <text x="404" y="268" fill="#00FF00" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">720p</text>
+
+  <!-- Auto reconnect -->
+  <text x="374" y="300" fill="#00FF00" font-size="8" font-family="sans-serif" font-weight="bold" letter-spacing="0.8">CONNECTION</text>
+  <text x="374" y="322" fill="#ccc" font-size="10" font-family="sans-serif">Auto Reconnect</text>
+  <rect x="530" y="310" width="36" height="18" rx="9" fill="#4CAF50"/>
+  <circle cx="556" cy="319" r="7" fill="white"/>
+
+  <!-- Save -->
+  <rect x="374" y="340" width="192" height="32" rx="8" fill="#00FF00"/>
+  <text x="470" y="360" fill="black" font-size="11" font-family="sans-serif" font-weight="bold" text-anchor="middle">Save</text>
+
+  <!-- Screen label -->
+  <text x="470" y="390" fill="#FFC107" font-size="10" font-family="sans-serif" font-weight="bold" text-anchor="middle">Settings Screen</text>
+  <text x="470" y="403" fill="#666" font-size="8" font-family="sans-serif" text-anchor="middle">Server / Stream / Connection config</text>
+
+  <!-- ============ Legend ============ -->
+  <rect x="640" y="80" width="220" height="140" rx="10" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <text x="750" y="105" fill="white" font-size="12" font-family="sans-serif" font-weight="bold" text-anchor="middle">Legend</text>
+
+  <rect x="660" y="120" width="60" height="14" rx="3" fill="none" stroke="#00FF00" stroke-width="2"/>
+  <text x="730" y="131" fill="#aaa" font-size="10" font-family="sans-serif">Detection box</text>
+
+  <rect x="660" y="145" width="60" height="14" rx="3" fill="#1a3a1a" stroke="#00FF00" stroke-width="1.5"/>
+  <text x="730" y="156" fill="#aaa" font-size="10" font-family="sans-serif">Active option</text>
+
+  <circle cx="678" cy="175" r="6" fill="#FF0000"/>
+  <text x="730" y="179" fill="#aaa" font-size="10" font-family="sans-serif">Recording ON</text>
+
+  <circle cx="678" cy="198" r="4" fill="#00FF00"/>
+  <text x="730" y="202" fill="#aaa" font-size="10" font-family="sans-serif">Connected status</text>
+</svg>

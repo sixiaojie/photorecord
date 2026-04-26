@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="phoneGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="serverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0d1452;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00FF00;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#00BFFF;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="#0d0d0d" rx="16"/>
+
+  <!-- Title -->
+  <text x="400" y="40" fill="white" font-size="22" font-family="sans-serif" font-weight="bold" text-anchor="middle">PhotoRecord - System Architecture</text>
+
+  <!-- Phone Device -->
+  <rect x="60" y="70" width="180" height="360" rx="30" fill="#222" filter="url(#shadow)"/>
+  <rect x="65" y="75" width="170" height="350" rx="27" fill="url(#phoneGrad)"/>
+
+  <!-- Phone Status Bar -->
+  <text x="100" y="105" fill="white" font-size="10" font-family="sans-serif">9:41</text>
+  <rect x="160" y="88" width="12" height="6" rx="2" fill="none" stroke="white" stroke-width="0.8"/>
+
+  <!-- Phone Screen Content -->
+  <rect x="80" y="120" width="140" height="120" rx="8" fill="#333"/>
+  <text x="150" y="185" fill="#555" font-size="10" font-family="sans-serif" text-anchor="middle">Camera Preview</text>
+
+  <!-- Detection box on phone -->
+  <rect x="95" y="135" width="45" height="55" rx="3" fill="none" stroke="#00FF00" stroke-width="2"/>
+
+  <!-- Record button on phone -->
+  <circle cx="150" cy="380" r="18" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="2"/>
+  <circle cx="150" cy="380" r="8" fill="#FF0000"/>
+
+  <!-- Phone label -->
+  <text x="150" y="455" fill="#888" font-size="12" font-family="sans-serif" text-anchor="middle">📱 Mobile App</text>
+  <text x="150" y="470" fill="#666" font-size="10" font-family="sans-serif" text-anchor="middle">React Native + VisionCamera</text>
+
+  <!-- Arrow: Phone to Server -->
+  <line x1="240" y1="220" x2="340" y2="220" stroke="url(#arrowGrad)" stroke-width="3" stroke-dasharray="8,4"/>
+  <polygon points="340,215 355,220 340,225" fill="#00FF00"/>
+  <text x="290" y="210" fill="#00FF00" font-size="11" font-family="sans-serif" text-anchor="middle">Video Frames</text>
+  <text x="290" y="240" fill="#aaa" font-size="10" font-family="sans-serif" text-anchor="middle">(WebSocket, ~20 FPS)</text>
+
+  <!-- Server Computer -->
+  <rect x="380" y="70" width="280" height="360" rx="20" fill="#111" filter="url(#shadow)"/>
+  <rect x="385" y="75" width="270" height="350" rx="17" fill="url(#serverGrad)"/>
+
+  <!-- Server Rack Detail -->
+  <rect x="405" y="100" width="230" height="40" rx="6" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="420" cy="120" r="5" fill="#00FF00"/>
+  <text x="435" y="125" fill="#aaa" font-size="12" font-family="sans-serif">gorilla/websocket</text>
+
+  <rect x="405" y="155" width="230" height="40" rx="6" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="420" cy="175" r="5" fill="#FFC107"/>
+  <text x="435" y="180" fill="#aaa" font-size="12" font-family="sans-serif">Frame Decoder</text>
+
+  <rect x="405" y="210" width="230" height="40" rx="6" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="420" cy="230" r="5" fill="#FFC107"/>
+  <text x="435" y="235" fill="#aaa" font-size="12" font-family="sans-serif">Image Preprocessor</text>
+
+  <rect x="405" y="265" width="230" height="40" rx="6" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="420" cy="285" r="5" fill="#FF5722"/>
+  <text x="435" y="290" fill="#aaa" font-size="12" font-family="sans-serif">Detection Engine</text>
+
+  <rect x="405" y="320" width="230" height="40" rx="6" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="420" cy="340" r="5" fill="#2196F3"/>
+  <text x="435" y="345" fill="#aaa" font-size="12" font-family="sans-serif">Result Serializer</text>
+
+  <!-- Server label -->
+  <text x="520" y="455" fill="#888" font-size="12" font-family="sans-serif" text-anchor="middle">🖥️ Go Server</text>
+  <text x="520" y="470" fill="#666" font-size="10" font-family="sans-serif" text-anchor="middle">Gorilla WebSocket + gocv + ONNX</text>
+
+  <!-- Arrow: Server to Phone -->
+  <line x1="380" y1="300" x2="240" y2="300" stroke="#2196F3" stroke-width="3" stroke-dasharray="8,4"/>
+  <polygon points="240,295 225,300 240,305" fill="#2196F3"/>
+  <text x="310" y="290" fill="#2196F3" font-size="11" font-family="sans-serif" text-anchor="middle">Detection Results</text>
+  <text x="310" y="320" fill="#aaa" font-size="10" font-family="sans-serif" text-anchor="middle">(Bounding boxes, labels, scores)</text>
+
+  <!-- Detection result on phone -->
+  <rect x="95" y="280" width="45" height="55" rx="3" fill="none" stroke="#00BFFF" stroke-width="2"/>
+  <rect x="93" y="270" width="40" height="12" rx="3" fill="#00BFFF"/>
+  <text x="113" y="279" fill="black" font-size="7" font-family="sans-serif" text-anchor="middle" font-weight="bold">person</text>
+
+  <!-- Config box -->
+  <rect x="680" y="150" width="100" height="130" rx="10" fill="#1a1a1a" stroke="#444" stroke-width="1"/>
+  <text x="730" y="175" fill="#00FF00" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">Config</text>
+  <text x="730" y="195" fill="#888" font-size="9" font-family="sans-serif" text-anchor="middle">config.yaml</text>
+  <text x="730" y="210" fill="#888" font-size="9" font-family="sans-serif" text-anchor="middle">Env variables</text>
+  <text x="730" y="225" fill="#888" font-size="9" font-family="sans-serif" text-anchor="middle">CLI flags</text>
+  <text x="730" y="245" fill="#666" font-size="8" font-family="sans-serif" text-anchor="middle">YAML + Env override</text>
+
+  <line x1="655" y1="215" x2="682" y2="215" stroke="#444" stroke-width="1"/>
+</svg>

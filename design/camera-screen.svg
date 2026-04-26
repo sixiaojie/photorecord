@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="phoneClip">
+      <rect x="0" y="0" width="390" height="844" rx="40"/>
+    </clipPath>
+  </defs>
+
+  <!-- Phone body -->
+  <rect x="0" y="0" width="390" height="844" rx="40" fill="#1a1a1a"/>
+  <rect x="2" y="2" width="386" height="840" rx="38" fill="url(#grad)"/>
+
+  <!-- Status Bar -->
+  <text x="28" y="52" fill="white" font-size="14" font-family="sans-serif" font-weight="600">9:41</text>
+  <rect x="310" y="20" width="18" height="10" rx="3" fill="none" stroke="white" stroke-width="1"/>
+  <rect x="312" y="22" width="6" height="6" rx="1.5" fill="white"/>
+  <circle cx="350" cy="25" r="5" fill="none" stroke="white" stroke-width="1"/>
+  <rect x="325" y="23" width="14" height="4" rx="1" fill="white" opacity="0.3"/>
+
+  <!-- Camera Feed Placeholder -->
+  <rect x="0" y="60" width="390" height="650" fill="#2a2a2a"/>
+  <text x="195" y="380" fill="#555" font-size="16" font-family="sans-serif" text-anchor="middle">Camera Preview</text>
+
+  <!-- Detection Box 1 -->
+  <rect x="80" y="200" width="140" height="180" rx="4" fill="none" stroke="#00FF00" stroke-width="3"/>
+  <rect x="78" y="178" width="90" height="24" rx="4" fill="#00FF00"/>
+  <text x="123" y="195" fill="black" font-size="13" font-family="sans-serif" font-weight="bold" text-anchor="middle">person 87%</text>
+
+  <!-- Detection Box 2 -->
+  <rect x="250" y="350" width="100" height="120" rx="4" fill="none" stroke="#00FF00" stroke-width="3"/>
+  <rect x="248" y="328" width="80" height="24" rx="4" fill="#00FF00"/>
+  <text x="288" y="345" fill="black" font-size="13" font-family="sans-serif" font-weight="bold" text-anchor="middle">car 92%</text>
+
+  <!-- Top Controls -->
+  <!-- Settings gear -->
+  <circle cx="352" cy="395" r="20" fill="rgba(0,0,0,0.5)"/>
+  <text x="352" y="400" fill="white" font-size="22" font-family="sans-serif" text-anchor="middle">⚙</text>
+
+  <!-- Bottom Controls Area -->
+  <rect x="0" y="690" width="390" height="154" rx="0" fill="rgba(0,0,0,0.7)"/>
+
+  <!-- Status Bar -->
+  <rect x="110" y="710" width="170" height="32" rx="16" fill="rgba(255,255,255,0.12)"/>
+  <circle cx="128" cy="726" r="5" fill="#00FF00" filter="url(#glow)"/>
+  <text x="142" y="730" fill="white" font-size="13" font-family="sans-serif">Connected</text>
+  <text x="235" y="730" fill="#aaa" font-size="13" font-family="sans-serif">20 FPS</text>
+
+  <!-- Record Button -->
+  <circle cx="195" cy="780" r="38" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="4"/>
+  <circle cx="195" cy="780" r="16" fill="#FF0000"/>
+
+  <!-- Settings Gear Bottom -->
+  <circle cx="315" cy="780" r="22" fill="rgba(255,255,255,0.1)"/>
+  <text x="315" y="786" fill="white" font-size="20" font-family="sans-serif" text-anchor="middle">⚙</text>
+
+  <!-- Adaptive info -->
+  <rect x="20" y="710" width="80" height="24" rx="12" fill="rgba(0,255,0,0.15)"/>
+  <text x="60" y="727" fill="#00FF00" font-size="11" font-family="sans-serif" text-anchor="middle">Auto</text>
+
+  <!-- Home indicator -->
+  <rect x="130" y="820" width="130" height="5" rx="2.5" fill="rgba(255,255,255,0.3)"/>
+</svg>
