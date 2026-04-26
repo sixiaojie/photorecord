@@ -72,20 +72,24 @@ workflows:
           </dict>
           </plist>
           EOL
-      - name: Build iOS debug
+      - name: Build iOS
         script: |
           cd $WORKING_DIRECTORY/ios
+          mkdir -p build
           xcodebuild -workspace $XCODE_WORKSPACE.xcworkspace \
                      -scheme $XCODE_SCHEME \
                      -configuration Debug \
                      -sdk iphoneos \
+                     -destination 'generic/platform=iOS' \
                      -archivePath build/Photorecord.xcarchive \
                      -allowProvisioningUpdates \
-                     archive | xcpretty
+                     -skipPackagePluginValidation \
+                     archive
           xcodebuild -exportArchive \
                      -archivePath build/Photorecord.xcarchive \
                      -exportPath build/ \
-                     -exportOptionsPlist exportOptions.plist | xcpretty
+                     -exportOptionsPlist exportOptions.plist \
+                     -allowProvisioningUpdates
     artifacts:
       - $WORKING_DIRECTORY/ios/build/*.ipa
       - $WORKING_DIRECTORY/ios/build/*.dSYM.zip
