@@ -3,8 +3,6 @@ workflows:
     name: Build Android APK
     instance_type: mac_mini_m2
     environment:
-      groups:
-        - codemagic_creds
       vars:
         WORKING_DIRECTORY: mobile
       node: latest
@@ -37,8 +35,6 @@ workflows:
     name: Build iOS IPA
     instance_type: mac_mini_m2
     environment:
-      groups:
-        - codemagic_creds
       vars:
         WORKING_DIRECTORY: mobile
         XCODE_WORKSPACE: Photorecord
