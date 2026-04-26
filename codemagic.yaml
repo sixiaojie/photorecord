@@ -19,7 +19,7 @@ workflows:
       - name: Install dependencies
         script: |
           cd $WORKING_DIRECTORY
-          npm ci
+          npm install
       - name: Build Android debug APK
         script: |
           cd $WORKING_DIRECTORY
@@ -53,7 +53,7 @@ workflows:
       - name: Install dependencies
         script: |
           cd $WORKING_DIRECTORY
-          npm ci
+          npm install
       - name: Install CocoaPods
         script: |
           cd $WORKING_DIRECTORY/ios
